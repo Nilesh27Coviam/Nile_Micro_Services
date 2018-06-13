@@ -45,4 +45,9 @@ public class CategoryController {
         BeanUtils.copyProperties(categoryEntity, categoryDTO);
         return categoryDTO;
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteAll")
+    public void deleteAllCategory(){
+        categoryService.deleteAll();
+    }
 }

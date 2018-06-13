@@ -9,6 +9,7 @@ public class CategoryDTO {
     }
 
     public void setCategoryName(String categoryName) {
+
         this.categoryName = categoryName;
     }
 }

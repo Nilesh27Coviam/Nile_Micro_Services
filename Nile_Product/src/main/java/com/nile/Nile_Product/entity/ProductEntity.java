@@ -1,6 +1,8 @@
 package com.nile.Nile_Product.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.Reference;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -15,7 +17,9 @@ public class ProductEntity {
     private String productId;
     private String productName;
     private String category;
-    private List<String> marchants;
+
+    @DBRef(db = "merchant")
+    private List<MerchantEntity> merchants;
     private String discription;
     private List<Map> attribute;
     private Integer stock;
@@ -53,12 +57,12 @@ public class ProductEntity {
         this.category = category;
     }
 
-    public List<String> getMarchants() {
-        return marchants;
+    public List<MerchantEntity> getMarchants() {
+        return merchants;
     }
 
-    public void setMarchants(List<String> marchants) {
-        this.marchants = marchants;
+    public void setMarchants(List<MerchantEntity> marchants) {
+        this.merchants = marchants;
     }
 
     public String getDiscription() {

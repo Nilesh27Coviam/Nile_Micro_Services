@@ -8,7 +8,7 @@ public class ProductDTO {
     private String productId;
     private String productName;
     private String category;
-    private List<String> marchants;
+    private List<Map> marchants;
     private String discription;
     private List<Map> attribute;
     private Integer stock;
@@ -47,11 +47,11 @@ public class ProductDTO {
         this.category = category;
     }
 
-    public List<String> getMarchants() {
+    public List<Map> getMarchants() {
         return marchants;
     }
 
-    public void setMarchants(List<String> marchants) {
+    public void setMarchants(List<Map> marchants) {
         this.marchants = marchants;
     }
 

@@ -32,4 +32,9 @@ public class CategoryServiceImpl implements CategoryService {
             return categoryRepository.save(categoryEntity);
         }
     }
+
+    @Override
+    public void deleteAll() {
+        categoryRepository.deleteAll();
+    }
 }

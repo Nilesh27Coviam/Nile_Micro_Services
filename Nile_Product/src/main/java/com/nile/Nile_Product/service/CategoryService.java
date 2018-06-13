@@ -8,4 +8,5 @@ import java.util.List;
 public interface CategoryService {
     public List<CategoryEntity> findAll();
     public CategoryEntity insertOrUpdate(CategoryEntity categoryEntity);
+    public void deleteAll();
 }

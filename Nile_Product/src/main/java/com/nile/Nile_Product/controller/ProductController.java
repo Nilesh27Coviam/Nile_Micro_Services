@@ -79,4 +79,10 @@ public class ProductController  {
         BeanUtils.copyProperties(productEntity, productDTO);
         return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
     }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteAll")
+    public void deleteAll(){
+
+        productService.deleteAll();
+    }
 }

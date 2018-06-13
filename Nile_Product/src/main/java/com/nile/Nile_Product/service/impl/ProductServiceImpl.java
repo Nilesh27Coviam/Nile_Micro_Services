@@ -1,8 +1,11 @@
 package com.nile.Nile_Product.service.impl;
 
+import com.nile.Nile_Product.entity.MerchantEntity;
 import com.nile.Nile_Product.entity.ProductEntity;
 import com.nile.Nile_Product.repository.ProductRepository;
 import com.nile.Nile_Product.service.ProductService;
+import com.nile.Nile_Product.utils.RandomStringGenerator;
+import jdk.nashorn.internal.ir.annotations.Reference;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,7 +43,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductEntity insert() {
         ProductEntity productEntity = new ProductEntity();
-        productEntity.setProductId("P02");
+        productEntity.setProductId(RandomStringGenerator.generateRandomString());
         productEntity.setProductName("Item-2");
         productEntity.setCategory("C03");
 
@@ -63,13 +66,26 @@ public class ProductServiceImpl implements ProductService {
         img.add("Image 3");
         productEntity.setImages(img);
 
-        List<String> marchant = new ArrayList<>();
-        marchant.add("Marchant 1");
-        marchant.add("Marchant 2");
-        marchant.add("Marchant 3");
-        marchant.add("Marchant 4");
-        productEntity.setMarchants(marchant);
 
+        MerchantEntity merchantEntity=new MerchantEntity();
+        merchantEntity.setName("M01");
+        merchantEntity.setRateing(2);
+        merchantEntity.setId("d18d2eaa-e34d-48af-972c-a2bd26a007d5");
+
+//        MerchantEntity merchantEntity2=new MerchantEntity();
+//        merchantEntity2.setName("nilesh");
+//        merchantEntity2.setRateing(1);
+//        merchantEntity2.setId(RandomStringGenerator.generateRandomString());
+        List<MerchantEntity> list=new ArrayList<MerchantEntity>();
+        list.add(merchantEntity);
+//        list.add(merchantEntity2);
+        productEntity.setMarchants(list);
+        //productEntity.setMarchants(marchant);
         return  productRepository.insert(productEntity);
+    }
+
+    @Override
+    public void deleteAll() {
+        productRepository.deleteAll();
     }
 }
