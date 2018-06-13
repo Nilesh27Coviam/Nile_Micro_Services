@@ -10,7 +10,7 @@ public class MerchantEntity {
     @Id
     public String id;
     public String name;
-    public Integer rateing;
+    public Integer rating;
 
     public String getId() {
         return id;
@@ -29,10 +29,10 @@ public class MerchantEntity {
     }
 
     public Integer getRateing() {
-        return rateing;
+        return rating;
     }
 
     public void setRateing(Integer rateing) {
-        this.rateing = rateing;
+        this.rating = rateing;
     }
 }

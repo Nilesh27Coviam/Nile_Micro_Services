@@ -42,4 +42,10 @@ public class MerchantController {
         return new ResponseEntity<List<MerchantDTO>>(merchantDTOS, HttpStatus.OK);
     }
 
+    @RequestMapping(method = RequestMethod.DELETE, value = "/deleteAll")
+    public void deleteAll(){
+
+        merchantService.deleteAll();
+    }
+
 }

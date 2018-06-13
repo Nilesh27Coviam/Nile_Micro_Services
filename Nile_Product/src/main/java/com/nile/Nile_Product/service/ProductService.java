@@ -11,6 +11,7 @@ public interface ProductService {
     public List<ProductEntity> findByCategory(String category);
     public ProductEntity findByProductId(String productId);
     public ProductEntity delete(String productId);
-    public ProductEntity insert();
+    public ProductEntity insert(ProductEntity productEntity);
     public void deleteAll();
+    public boolean insertAll(List<ProductEntity> productEntityList);
 }

@@ -8,4 +8,5 @@ public interface MerchantService {
 
     public void addMerchant();
     public List<MerchantEntity> getAll();
+    public void deleteAll();
 }

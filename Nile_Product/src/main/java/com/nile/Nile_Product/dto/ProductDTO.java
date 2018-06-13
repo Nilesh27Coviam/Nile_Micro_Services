@@ -14,6 +14,15 @@ public class ProductDTO {
     private Integer stock;
     private List<String> images;
     private Integer price;
+    private String breand;
+
+    public String getBreand() {
+        return breand;
+    }
+
+    public void setBreand(String breand) {
+        this.breand = breand;
+    }
 
     public Integer getPrice() {
         return price;

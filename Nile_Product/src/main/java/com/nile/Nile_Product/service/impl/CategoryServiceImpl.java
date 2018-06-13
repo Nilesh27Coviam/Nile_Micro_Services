@@ -23,14 +23,7 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryEntity insertOrUpdate(CategoryEntity categoryEntity) {
-
-        if(categoryEntity.getCategoryId() == null){
-            categoryEntity.setCategoryId(RandomStringGenerator.generateRandomString());
-            return categoryRepository.insert(categoryEntity);
-        }
-        else {
-            return categoryRepository.save(categoryEntity);
-        }
+        return categoryRepository.insert(categoryEntity);
     }
 
     @Override

@@ -18,14 +18,19 @@ public class MerchantServiceImpl implements MerchantService {
     @Override
     public void addMerchant() {
         MerchantEntity merchantEntity = new MerchantEntity();
-        merchantEntity.setId(RandomStringGenerator.generateRandomString());
-        merchantEntity.setName("M01");
-        merchantEntity.setRateing(2);
+        merchantEntity.setId("M01");
+        merchantEntity.setName("Marchant - 01");
+        merchantEntity.setRateing(4);
         merchantRepository.insert(merchantEntity);
     }
 
     @Override
     public List<MerchantEntity> getAll() {
         return merchantRepository.findAll();
+    }
+
+    @Override
+    public void deleteAll() {
+        merchantRepository.deleteAll();
     }
 }

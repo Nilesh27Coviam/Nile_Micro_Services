@@ -35,11 +35,12 @@ public class CategoryController {
         return new ResponseEntity<List<CategoryDTO>>(categoryDTOList, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.POST, value = "/insert/{name}")
-    public CategoryDTO addcategory(@PathVariable("name") String name){
+    @RequestMapping(method = RequestMethod.POST, value = "/insert/{name}/{id}")
+    public CategoryDTO addcategory(@PathVariable("name") String name,@PathVariable("id") String id){
 
         CategoryEntity categoryEntity = new CategoryEntity();
         categoryEntity.setCategoryName(name);
+        categoryEntity.setCategoryId(id);
         categoryEntity = categoryService.insertOrUpdate(categoryEntity);
         CategoryDTO categoryDTO = new CategoryDTO();
         BeanUtils.copyProperties(categoryEntity, categoryDTO);

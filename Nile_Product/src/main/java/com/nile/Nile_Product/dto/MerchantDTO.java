@@ -15,7 +15,6 @@ public class MerchantDTO {
     }
 
     public String getId() {
-
         return id;
     }
 

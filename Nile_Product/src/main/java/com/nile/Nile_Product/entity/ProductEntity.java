@@ -17,14 +17,20 @@ public class ProductEntity {
     private String productId;
     private String productName;
     private String category;
-
-    @DBRef(db = "merchant")
     private List<MerchantEntity> merchants;
     private String discription;
     private List<Map> attribute;
     private Integer stock;
     private List<String> images;
+    private String breand;
 
+
+    public String getBreand() {
+        return breand;
+    }
+    public void setBreand(String breand) {
+        this.breand = breand;
+    }
     public List<Map> getAttribute() {
         return attribute;
     }

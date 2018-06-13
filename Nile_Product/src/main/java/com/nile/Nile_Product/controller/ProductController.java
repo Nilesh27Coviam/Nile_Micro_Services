@@ -1,18 +1,13 @@
 package com.nile.Nile_Product.controller;
 
-import com.nile.Nile_Product.dto.CategoryDTO;
 import com.nile.Nile_Product.dto.ProductDTO;
-import com.nile.Nile_Product.entity.CategoryEntity;
 import com.nile.Nile_Product.entity.ProductEntity;
 import com.nile.Nile_Product.service.ProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,12 +67,24 @@ public class ProductController  {
     }
 
     @RequestMapping(method = RequestMethod.POST, value = "/insert")
-    public ResponseEntity<ProductDTO> insert(){
-
-        ProductEntity productEntity = productService.insert();
-        ProductDTO productDTO = new ProductDTO();
+    public ResponseEntity<ProductDTO> insert(@RequestBody ProductDTO productDTO){
+        ProductEntity productEntity = new ProductEntity();
+        BeanUtils.copyProperties(productDTO, productEntity);
+        productEntity = productService.insert(productEntity);
         BeanUtils.copyProperties(productEntity, productDTO);
         return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/insertAll")
+    public boolean insertAll(@RequestBody List<ProductEntity> productDTOList){
+
+        List<ProductEntity> productEntityList = new ArrayList<>();
+        for(ProductEntity productDTO: productDTOList){
+            ProductEntity productEntity = new ProductEntity();
+            BeanUtils.copyProperties(productDTO, productEntity);
+            productEntityList.add(productEntity);
+        };
+        return productDTOList.addAll(productEntityList);
     }
 
     @RequestMapping(method = RequestMethod.DELETE, value = "/deleteAll")

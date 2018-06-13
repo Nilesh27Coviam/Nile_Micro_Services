@@ -41,51 +41,17 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductEntity insert() {
-        ProductEntity productEntity = new ProductEntity();
-        productEntity.setProductId(RandomStringGenerator.generateRandomString());
-        productEntity.setProductName("Item-2");
-        productEntity.setCategory("C03");
-
-        List<Map> attrib = new ArrayList<Map>();
-        Map<String, String> attribute = new HashMap<String, String>();
-        attribute.put("width", "01");
-        attribute.put("heigth", "02");
-        attribute.put("wight", "120");
-        attribute.put("color", "Red");
-        attribute.put("materials", "steel");
-        attrib.add(attribute);
-
-        productEntity.setAttribute(attrib);
-        productEntity.setDiscription("This is discription");
-        productEntity.setStock(new Integer(232));
-
-        List<String> img = new ArrayList<String>();
-        img.add("Image 1");
-        img.add("Image 2");
-        img.add("Image 3");
-        productEntity.setImages(img);
-
-
-        MerchantEntity merchantEntity=new MerchantEntity();
-        merchantEntity.setName("M01");
-        merchantEntity.setRateing(2);
-        merchantEntity.setId("d18d2eaa-e34d-48af-972c-a2bd26a007d5");
-
-//        MerchantEntity merchantEntity2=new MerchantEntity();
-//        merchantEntity2.setName("nilesh");
-//        merchantEntity2.setRateing(1);
-//        merchantEntity2.setId(RandomStringGenerator.generateRandomString());
-        List<MerchantEntity> list=new ArrayList<MerchantEntity>();
-        list.add(merchantEntity);
-//        list.add(merchantEntity2);
-        productEntity.setMarchants(list);
-        //productEntity.setMarchants(marchant);
+    public ProductEntity insert(ProductEntity productEntity) {
         return  productRepository.insert(productEntity);
     }
 
     @Override
     public void deleteAll() {
         productRepository.deleteAll();
+    }
+
+    @Override
+    public boolean insertAll(List<ProductEntity> productEntityList) {
+        return productEntityList.addAll(productEntityList);
     }
 }
