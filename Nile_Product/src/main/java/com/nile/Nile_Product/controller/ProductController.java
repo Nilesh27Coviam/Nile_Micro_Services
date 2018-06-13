@@ -37,10 +37,13 @@ public class ProductController  {
         return new ResponseEntity<List<ProductDTO>>(productDTOS, HttpStatus.OK);
     }
 
-    @RequestMapping(method = RequestMethod.GET, value = "/getProductDetailsById")
-    public ResponseEntity<ProductDTO> getProductDetailsById(@PathVariable("productId") String productId){
+    @RequestMapping(method = RequestMethod.GET, value = "/getProductDetailsById/{productId}")
+    public ResponseEntity<?> getProductDetailsById(@PathVariable("productId") String productId){
 
         ProductEntity productEntity = productService.findByProductId(productId);
+        if(productEntity == null){
+            return new ResponseEntity<String>("No data found", HttpStatus.OK);
+        }
         ProductDTO productDTO = new ProductDTO();
         BeanUtils.copyProperties(productEntity, productDTO);
         return new ResponseEntity<ProductDTO>(productDTO, HttpStatus.OK);
