@@ -9,19 +9,18 @@ import java.util.Date;
 @Table(name = OrderEntity.TABLE_NAME)
 public class OrderEntity {
 
-    static final String TABLE_NAME = "ORDER";
+    static final String TABLE_NAME = "order";
 
     @Id
     @GeneratedValue(generator = "uuid")
     @GenericGenerator(name = "uuid", strategy = "uuid2")
     @Column(name = "order_id")
     private String orderId;
-
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column (name = "order_no", unique = true)
     private Long orderNo;
-    private String user_id;
-    private String product_id;
+    private String userId;
+    private String productId;
     private Integer quantity;
     private Date date;
     private String marchantId;
@@ -44,19 +43,19 @@ public class OrderEntity {
     }
 
     public String getUser_id() {
-        return user_id;
+        return userId;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    public void setUser_id(String userId) {
+        this.userId = userId;
     }
 
     public String getProduct_id() {
-        return product_id;
+        return productId;
     }
 
-    public void setProduct_id(String product_id) {
-        this.product_id = product_id;
+    public void setProduct_id(String productId) {
+        this.productId = productId;
     }
 
     public Integer getQuantity() {

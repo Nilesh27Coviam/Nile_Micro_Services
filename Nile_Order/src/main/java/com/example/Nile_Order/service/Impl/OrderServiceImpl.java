@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderServiceImpl implements OrderService {
@@ -25,5 +26,15 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public List<OrderEntity> getAllOrders() {
         return (List<OrderEntity>) orderRepository.findAll();
+    }
+
+    @Override
+    public List<OrderEntity> findByUserId(String id) {
+        return  orderRepository.findByUserId(id);
+    }
+
+    @Override
+    public Optional<OrderEntity> findById(String id) {
+        return orderRepository.findById(id);
     }
 }
